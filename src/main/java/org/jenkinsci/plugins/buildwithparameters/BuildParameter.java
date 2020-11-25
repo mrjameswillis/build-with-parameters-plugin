@@ -6,6 +6,8 @@ import hudson.model.PasswordParameterValue;
 import hudson.model.StringParameterValue;
 import hudson.model.TextParameterValue;
 import hudson.model.RunParameterValue;
+import org.jvnet.jenkins.plugins.nodelabelparameter.LabelParameterValue;
+
 import java.util.List;
 
 public class BuildParameter {
@@ -50,6 +52,8 @@ public class BuildParameter {
             this.value = String.valueOf(((BooleanParameterValue) parameterValue).value);
         } else if (parameterValue instanceof RunParameterValue) {
             this.value = String.valueOf(((RunParameterValue) parameterValue).getRunId());
+        } else if (parameterValue instanceof LabelParameterValue) {
+            this.value = String.valueOf(((LabelParameterValue) parameterValue).getLabel());
         } else if (parameterValue instanceof PasswordParameterValue) {
             this.value = JOB_DEFAULT_PASSWORD_PLACEHOLDER;
         }

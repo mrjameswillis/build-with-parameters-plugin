@@ -29,6 +29,7 @@ import net.sf.json.JSONObject;
 import org.kohsuke.stapler.Stapler;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
+import org.jvnet.jenkins.plugins.nodelabelparameter.LabelParameterDefinition;
 
 public class BuildWithParametersAction<T extends Job<?, ?> & ParameterizedJob> implements Action {
     private static final String URL_NAME = "parambuild";
@@ -66,6 +67,8 @@ public class BuildWithParametersAction<T extends Job<?, ?> & ParameterizedJob> i
                 buildParameter.setType(BuildParameterType.TEXT);
             } else if (parameterDefinition.getClass().isAssignableFrom(RunParameterDefinition.class)) {
                 buildParameter.setType(BuildParameterType.RUN);
+            } else if (parameterDefinition.getClass().isAssignableFrom(LabelParameterDefinition.class)) {
+                buildParameter.setType(BuildParameterType.LABEL);
             } else {
                 // default to string
                 buildParameter.setType(BuildParameterType.STRING);
