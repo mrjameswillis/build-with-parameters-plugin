@@ -8,5 +8,5 @@ package org.jenkinsci.plugins.buildwithparameters;
  */
 public enum BuildParameterType {
 
-    STRING, PASSWORD, TEXT, BOOLEAN, CHOICE, RUN, LABEL;
+    STRING, PASSWORD, TEXT, BOOLEAN, CHOICE, RUN, LABEL, NODE
 }

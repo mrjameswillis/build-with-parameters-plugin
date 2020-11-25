@@ -7,6 +7,7 @@ import hudson.model.StringParameterValue;
 import hudson.model.TextParameterValue;
 import hudson.model.RunParameterValue;
 import org.jvnet.jenkins.plugins.nodelabelparameter.LabelParameterValue;
+import org.jvnet.jenkins.plugins.nodelabelparameter.NodeParameterValue;
 
 import java.util.List;
 
@@ -52,6 +53,10 @@ public class BuildParameter {
             this.value = String.valueOf(((BooleanParameterValue) parameterValue).value);
         } else if (parameterValue instanceof RunParameterValue) {
             this.value = String.valueOf(((RunParameterValue) parameterValue).getRunId());
+        } else if (parameterValue instanceof NodeParameterValue) {
+            String tmpValue = String.valueOf(((NodeParameterValue) parameterValue).getLabel());
+            if (tmpValue.startsWith("Job triggered without a valid online node")) { tmpValue = ""; }
+            this.value = tmpValue;
         } else if (parameterValue instanceof LabelParameterValue) {
             this.value = String.valueOf(((LabelParameterValue) parameterValue).getLabel());
         } else if (parameterValue instanceof PasswordParameterValue) {
