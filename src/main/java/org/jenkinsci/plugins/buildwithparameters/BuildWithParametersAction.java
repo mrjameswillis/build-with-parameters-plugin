@@ -17,6 +17,7 @@ import hudson.model.PasswordParameterDefinition;
 import hudson.model.PasswordParameterValue;
 import hudson.model.StringParameterDefinition;
 import hudson.model.TextParameterDefinition;
+import hudson.model.RunParameterDefinition;
 import hudson.util.Secret;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -63,6 +64,8 @@ public class BuildWithParametersAction<T extends Job<?, ?> & ParameterizedJob> i
                 buildParameter.setType(BuildParameterType.STRING);
             } else if (parameterDefinition.getClass().isAssignableFrom(TextParameterDefinition.class)) {
                 buildParameter.setType(BuildParameterType.TEXT);
+            } else if (parameterDefinition.getClass().isAssignableFrom(RunParameterDefinition.class)) {
+                buildParameter.setType(BuildParameterType.RUN);
             } else {
                 // default to string
                 buildParameter.setType(BuildParameterType.STRING);
