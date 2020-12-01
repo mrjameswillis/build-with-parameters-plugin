@@ -1,6 +1,6 @@
 package org.jenkinsci.plugins.buildwithparameters;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import hudson.model.ParameterValue;
 import hudson.model.FreeStyleProject;
@@ -69,10 +69,10 @@ public class BuildWithParametersActionTest {
     }
 
     private String applyDefaultPasswordHelper(String jobDefaultPassword, String passwordFromRequest) throws IOException {
-        ParameterDefinition pwParamDef = new PasswordParameterDefinition("n", jobDefaultPassword, "d");
+        PasswordParameterDefinition pwParamDef = new PasswordParameterDefinition("n", jobDefaultPassword, "d");
         BuildWithParametersAction bwpa = testableProject(pwParamDef);
 
-        ParameterValue parameterValue = new PasswordParameterValue("n", passwordFromRequest);
+        PasswordParameterValue parameterValue = new PasswordParameterValue("n", passwordFromRequest);
 
         ParameterValue adjustedParamValue = bwpa.applyDefaultPassword(pwParamDef, parameterValue);
         return BuildWithParametersAction.getPasswordValue((PasswordParameterValue)adjustedParamValue);

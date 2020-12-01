@@ -4,14 +4,14 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
         <version>1.557</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath />
     </parent>
 
     <artifactId>build-with-parameters</artifactId>
-    <version>1.5-SNAPSHOT</version>
+    <version>${revision}${changelist}</version>
     <name>Build With Parameters</name>
-    <description>Allows the user to provide parameters for a build in the url, prompting for confirmation before
-        triggering the job.
+    <description>
+        Allows the user to provide parameters for a build in the url, prompting for confirmation before triggering the job.
     </description>
     <packaging>hpi</packaging>
     <url>https://wiki.jenkins-ci.org/display/JENKINS/Build+With+Parameters+Plugin</url>
@@ -22,7 +22,19 @@
         </license>
     </licenses>
 
+    <properties>
+        <revision>1.5</revision>
+        <changelist>-SNAPSHOT</changelist>
+        <jenkins.version>1.651.1</jenkins.version>
+        <java.level>8</java.level>
+    </properties>
+
     <developers>
+        <developer>
+            <id>mrjameswillis</id>
+            <name>James Willis</name>
+            <email>jameswillis.cs@gmail.com</email>
+        </developer>
         <developer>
             <id>sugonyak_ivan</id>
             <name>Ivan Sugonyak</name>
@@ -37,8 +49,7 @@
 
     <scm>
         <connection>scm:git:ssh://github.com/jenkinsci/build-with-parameters-plugin.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/jenkinsci/build-with-parameters-plugin.git
-        </developerConnection>
+        <developerConnection>scm:git:ssh://git@github.com/jenkinsci/build-with-parameters-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/build-with-parameters-plugin</url>
         <tag>HEAD</tag>
     </scm>
